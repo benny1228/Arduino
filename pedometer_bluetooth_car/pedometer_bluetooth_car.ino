@@ -24,7 +24,7 @@ Serial.println(cmmd[0]);
  switch(cmmd[0]){
   case 97:
   forward(1000);
-  Serial.print("A");
+  //Serial.print("A");
   break;
    case 100:
     trunLeft(400);
@@ -34,7 +34,7 @@ Serial.println(cmmd[0]);
     break;
     case 99:
     backward(400);
-    Serial.print("C");
+    //Serial.print("C");
     break;
     case 101:
     bestop(400);
