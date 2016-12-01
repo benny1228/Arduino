@@ -3,25 +3,56 @@
 
  Servo servoRight;
  Servo servoLeft;
+ Servo servoY;
  SoftwareSerial BTSerial(10, 11);
  char c;
 void setup() {
   // put your setup code here, to run once:
 servoRight.attach(12);
 servoLeft.attach(13);
+servoY.attach(4);
 BTSerial.begin(9600);
 Serial.begin(9600);
 }
+char var[35];
 
 void loop() {
   // put your main code here, to run repeatedly:
-  byte cmmd[20];
-  int insize;   
+  int insize;
+  char cmd ;
+  int i = 0;
 if(BTSerial.available()){
+
+while(i<34){
+  var[i]=BTSerial.read();
+  i++;
+  }
  
-cmmd[0]=char(BTSerial.read());
-Serial.println(cmmd[0]);
- switch(cmmd[0]){
+
+Serial.println(var);
+
+Serial.println(var[0]);
+
+Serial.println(var[1]);
+
+Serial.println(var[2]);
+
+if(var[0]='0'){
+  if(var[1]='0'){
+    if(var[2]='0'){
+      servoY.write(0);
+      }else if(var[2]='1'){
+      servoY.write(1);
+        }else if(var[2]='2'){
+           servoY.write(2);
+          }else if(var[2]='3'){
+             servoY.write(3);
+             }
+    }
+  }
+
+
+/* switch(cmmd[0]){
   case 97:
   forward(1000);
   //Serial.print("A");
@@ -39,7 +70,7 @@ Serial.println(cmmd[0]);
     case 101:
     bestop(400);
     break;
-  }
+  }*/
   }
 }
 
